@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  # 1. Backend Service Configuration
+  api-server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mern-translator-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    restart: always
+
+# Frontend Service Configuration
+  web-client:
+    build:
+      context: ./Frontend/my-react-app  # <-- Path ko aapke folder layout ke mutabiq update kar diya
+      dockerfile: Dockerfile
+    container_name: mern-translator-frontend
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - api-server

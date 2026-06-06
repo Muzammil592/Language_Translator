@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --blue-900: #0664c8;
+  --blue-700: #1992f6;
+  --blue-500: #3db0ff;
+  --sky-100: #ecf7ff;
+  --text-900: #0e1a27;
+  --text-600: #56657a;
+  --white: #ffffff;
+  --surface: #f4f6f9;
+  --shadow: 0 20px 50px rgba(8, 34, 72, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 10%, #3dbeff 0%, #0b74d8 45%, #075cb8 100%);
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-900);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.theme-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.theme-frame {
+  width: min(1160px, 100%);
+  background: var(--surface);
+  border: 3px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.theme-hero {
+  display: grid;
+  grid-template-columns: 1.06fr 0.94fr;
+  align-items: center;
+  min-height: 650px;
+}
+
+.theme-left {
+  padding: 54px 44px 54px;
+  animation: slideUp 0.7s ease both;
+}
+
+.theme-eyebrow {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(44px, 6vw, 66px);
+  font-weight: 800;
+  line-height: 0.9;
+  margin: 0;
+}
+
+.theme-left h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(44px, 5vw, 60px);
+  margin: 4px 0 8px;
+}
+
+.theme-subtext {
+  max-width: 540px;
+  color: var(--text-600);
+  line-height: 1.58;
+  margin: 0 0 20px;
+}
+
+.theme-controls {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+}
+
+.theme-label {
+  font-size: 14px;
+  color: #1e3550;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.theme-textarea,
+.theme-select {
+  width: 100%;
+  border: 1px solid #cde5ff;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  background: #fbfdff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-textarea {
+  resize: vertical;
+  min-height: 128px;
+}
+
+.theme-textarea:focus,
+.theme-select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(61, 176, 255, 0.23);
+}
+
+.theme-button {
+  margin-top: 6px;
+  width: fit-content;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0995ff, #0f7cdf);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(15, 124, 223, 0.35);
+}
+
+.theme-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.theme-result {
+  margin-top: 14px;
+  max-width: 520px;
+  border-left: 4px solid var(--blue-700);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #eaf5ff;
+}
+
+.theme-result strong {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+}
+
+.theme-result p {
+  margin: 8px 0 0;
+  color: #15365b;
+  line-height: 1.5;
+}
+
+.theme-right {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1s ease both;
+}
+
+.art-phone {
+  width: 212px;
+  height: 384px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #2eb3ff 0%, #1a91eb 100%);
+  border: 6px solid #113f79;
+  position: relative;
+  box-shadow: 0 20px 28px rgba(23, 76, 141, 0.35);
+  z-index: 2;
+}
+
+.art-screen {
+  margin: 78px auto 0;
+  width: 75%;
+  border-radius: 10px;
+  background: #ff4f5a;
+  color: white;
+  font-family: 'Manrope', sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.art-card {
+  position: absolute;
+  border-radius: 12px;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+}
+
+.art-a {
+  width: 112px;
+  height: 82px;
+  background: #5f1e88;
+  top: 120px;
+  left: 30px;
+  font-size: 50px;
+}
+
+.art-char {
+  width: 112px;
+  height: 84px;
+  background: #ff4c58;
+  top: 210px;
+  left: 40px;
+  font-size: 40px;
+}
+
+.art-bubble {
+  position: absolute;
+  background: white;
+  border: 2px solid #c9dff6;
+  border-radius: 14px;
+  color: #1e2d45;
+  font-weight: 600;
+  padding: 8px 16px;
+  z-index: 3;
+}
+
+.art-bonjour {
+  left: 12px;
+  bottom: 186px;
+}
+
+.art-hello {
+  right: 46px;
+  top: 178px;
+}
+
+.art-dot-grid {
+  position: absolute;
+  right: 48px;
+  bottom: 128px;
+  width: 95px;
+  height: 46px;
+  background-image: radial-gradient(#1396ff 2px, transparent 2px);
+  background-size: 16px 16px;
+  opacity: 0.75;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .theme-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-right {
+    min-height: 440px;
+    padding-bottom: 34px;
+  }
+
+}
+
+@media (max-width: 760px) {
+  .theme-page {
+    padding: 16px;
+  }
+
+  .theme-left {
+    padding: 36px 18px 28px;
+  }
+
+  .theme-eyebrow {
+    font-size: 42px;
+  }
+
+  .theme-left h1 {
+    font-size: 38px;
+  }
+
+  .theme-right {
+    min-height: 360px;
+  }
+
+  .art-phone {
+    transform: scale(0.9);
+  }
+}
