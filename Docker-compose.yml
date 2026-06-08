@@ -4,7 +4,7 @@ services:
   # 1. Backend Service Configuration
   api-server:
     build:
-      context: ./backend
+      context: ./Backend    # <-- Isay check karein, capital 'B' hona chahiye
       dockerfile: Dockerfile
     container_name: mern-translator-backend
     ports:
@@ -16,7 +16,7 @@ services:
 # Frontend Service Configuration
   web-client:
     build:
-      context: ./Frontend/my-react-app  # <-- Path ko aapke folder layout ke mutabiq update kar diya
+      context: ./Frontend/my-react-app  # <-- Isay check karein, capital 'F' hona chahiye
       dockerfile: Dockerfile
     container_name: mern-translator-frontend
     ports:
