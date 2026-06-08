@@ -1,37 +1,31 @@
 name: MERN Translator CI/CD Pipeline
 
-# Controls when the workflow will run
 on:
   push:
-    branches: [ main, master ] # Jab bhi in branches par push ho
+    branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
 
 jobs:
-  # Job 1: Integrity Check & Compilation Test
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: GitHub server par aapka code clone karega
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Step 2: Environment variables simulate karne ke liye dummy .env file banana
+      # Yahan humne Backend ka 'B' aur Frontend ka 'F' capital kar diya hai:
       - name: Create Dummy Environment Files
         run: |
-          echo "RAPID_API_KEY=mock_key" > backend/.env
+          echo "RAPID_API_KEY=mock_key" > Backend/.env
           echo "VITE_API_URL=http://localhost:5000" > Frontend/my-react-app/.env
 
-      # Step 3: Docker Environment Verify karna
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Step 4: Test if Docker Compose builds successfully
       - name: Test Docker Compose Build
         run: |
           docker compose build
 
-      # Step 5: Output Success Message
       - name: Pipeline Status
         run: echo "CI Build Phase Successful! Images are clean and compilable."
