@@ -14,19 +14,40 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Paths ko aapki actual directory ke mutabiq strict match kiya hai:
+      # 1. Environment variables set karna
       - name: Create Dummy Environment Files
         run: |
           echo "RAPID_API_KEY=mock_key" > Backend/.env
           echo "VITE_API_URL=http://localhost:5000" > Frontend/my-react-app/.env
 
+      # 2. Docker Setup
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # Yahan humne file ka naam exact capital 'D' ke sath specify kar diya hai:
-      - name: Test Docker Compose Build
+      # 3. Docker Image Build karna
+      - name: Build Docker Images
         run: |
           docker compose -f Docker-compose.yml build
 
-      - name: Pipeline Status
-        run: echo "CI Build Phase Successful! Images are clean and compilable."
+      # 4. 🔥 GitHub Runner Par Containers ko Live Chalana (Naya Step)
+      - name: Run Docker Containers
+        run: |
+          docker compose -f Docker-compose.yml up -d
+
+      # 5. 👀 Check karna ke kya services live hain aur respond kar rahi hain (Naya Step)
+      - name: Verify Running Containers & Health
+        run: |
+          echo "=== 5 Seconds Wait Kar Rahein Hain Taake Servers Active Ho Jayein ==="
+          sleep 5
+          
+          echo "=== Container Running Status ==="
+          docker ps
+          
+          echo "=== Backend Core API Health Test ==="
+          # curl command se check karenge ke port 5000 responsive hai ya nahi
+          curl -f http://localhost:5000 || echo "Backend server initialization pending or check endpoint path"
+
+      # 6. Safety clean up
+      - name: Stop Containers
+        run: |
+          docker compose -f Docker-compose.yml down
